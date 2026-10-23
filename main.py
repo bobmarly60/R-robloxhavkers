@@ -3,9 +3,10 @@ import os
 import time
 import requests
 import xml.etree.ElementTree as ET
+from datetime import datetime
 
-# --- YOUR WEBHOOK ---
-WEBHOOK_URL = "https://discord.com/api/webhooks/1563134205158760508/07-1rtk9dsYZEC_w6If2Tx7xH053opfflm_Y3brn3-FetUlDJwkkgJD9REJPDEwnQzRe"
+# --- YOUR NEW WEBHOOK ---
+WEBHOOK_URL = "https://discord.com/api/webhooks/1563146584307400825/YvqFQqRWEBcRntUMZBLt3ZUd9SzVn87HNQftJMDNmuGYy3d3LPrWiHLqfzRBy3DaYSrd"
 
 # --- SUBREDDIT FEED ---
 FEED_URL = "https://www.reddit.com/r/robloxhackers/new/.rss"
@@ -44,7 +45,9 @@ def send_discord(title, author, url):
         print(f"[hook] error: {e}")
 
 def check_reddit():
-    print("[reddit] checking r/robloxhackers...")
+    current_time = datetime.now().strftime("%H:%M:%S")
+    print(f"[{current_time}] [reddit] checking r/robloxhackers...")
+    
     seen = load_seen()
     is_first_run = len(seen) == 0
 
